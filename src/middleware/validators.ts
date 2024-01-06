@@ -5,6 +5,8 @@ import {
   signInSchema,
   signUpSchema,
 } from "../schema/userSchema";
+import { extractValidationErrors } from "../helpers/schemaError";
+import AppResponse from "../helpers/AppResponse";
 
 function createValidationMiddleware(
   schema: z.ZodObject<any, any, any> | z.ZodString
@@ -15,8 +17,8 @@ function createValidationMiddleware(
       next();
     } catch (error: unknown) {
       if (error instanceof Error) {
-        //   const validationErrors = extractValidationErrors(error);
-        //   next(new AppResponse(validationErrors, null, 400));
+        const validationErrors = extractValidationErrors(error);
+        next(new AppResponse(validationErrors, null, 400));
       }
     }
   };

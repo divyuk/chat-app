@@ -10,13 +10,17 @@ import { signToken } from "./authController";
 
 export const signUp = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
+    //1. Get the body
     const { fullname, email, password, username } = req.body;
+    //2. Read from the file if already exist throw error
     const userData: UserModel = await readFile();
     if (userData.users.find((user: UserMap) => user.email === email)) {
       throw new AppResponse(commonResponseMessages.EMAIL_EXIST);
     }
+    //3. Hash the password before storing
     const hashedPassword = await argon2.hash(password);
 
+    //4. Create the payload
     const payload = {
       id: generateRandomId(21),
       fullname,
@@ -25,6 +29,7 @@ export const signUp = catchAsync(
       password: hashedPassword,
     };
 
+    //5. Store and write
     userData.users.push(payload);
     await writeFile(JSON.stringify(userData));
 
