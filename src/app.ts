@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+import path from "path";
 import express, { Express, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import helmet from "helmet";
@@ -10,6 +12,10 @@ import responseMiddleware from "./middleware/responseMiddleware";
 // import responseMiddleware from "./middleware/responseMiddleware";
 // import AppResponse from "./helpers/AppResponse";
 // import { commonResponseMessages } from "./data/constants";
+
+const envpath = path.join(__dirname, "..", ".env");
+
+dotenv.config({ path: envpath });
 
 const app: Express = express();
 
