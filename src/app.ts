@@ -3,6 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import mongoose from "mongoose";
 import userRouter from "./routes/userRoutes";
+import responseMiddleware from "./middleware/responseMiddleware";
 
 // import chatRouter from "./routes/chatRoutes";
 // import messageRouter from "./routes/messageRoutes";
@@ -41,8 +42,7 @@ app.use("/api/v1/users", userRouter);
 // app.use((req: Request, res: Response, next: NextFunction) => {
 //   throw next(new AppResponse(commonResponseMessages.RESOURCE_NOT_FOUND));
 // });
-
-// common response middleware
-// app.use(responseMiddleware);
+//? Act as global error handler and response mechanism
+app.use(responseMiddleware);
 
 export default app;
