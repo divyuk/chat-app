@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2016",
-    "module": "nodenext",
+    "module": "CommonJS",
     "lib": ["es6"],
     "allowJs": true,
     "outDir": "build",
