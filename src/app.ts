@@ -1,7 +1,9 @@
 import express, { Express, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import helmet from "helmet";
+import mongoose from "mongoose";
 import userRouter from "./routes/userRoutes";
+
 // import chatRouter from "./routes/chatRoutes";
 // import messageRouter from "./routes/messageRoutes";
 // import responseMiddleware from "./middleware/responseMiddleware";
@@ -17,8 +19,22 @@ app.use(helmet());
 // middleware for parsing request
 app.use(express.json());
 
+//? Database Connectionnpm install mongodb
+if (process.env.NODE_ENV !== "test") {
+  const MONGODB_URI: string | undefined = process.env.MONGODB_URI;
+
+  if (!MONGODB_URI) {
+    console.error("MONGODB_URI is not defined in the environment variables");
+  } else {
+    mongoose
+      .connect(MONGODB_URI)
+      .then(() => console.log("Successfully DB connected"))
+      .catch((err) => console.error("Problem in connecting Database", err));
+  }
+}
+
 // api routes
-app.use("/api/users", userRouter);
+app.use("/api/v1/users", userRouter);
 // app.use("/api/chat", chatRouter);
 // app.use("/api/messages", messageRouter);
 
