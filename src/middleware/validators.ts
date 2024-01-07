@@ -24,3 +24,4 @@ function createValidationMiddleware(
   };
 }
 export const validateSignUp = createValidationMiddleware(signUpSchema);
+export const validateSignIn = createValidationMiddleware(signInSchema);
