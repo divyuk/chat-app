@@ -1,4 +1,4 @@
-const commonResponseMessages = {
+const commonResponseMessages: { [key: string]: string } = {
   FETCHED_SUCCESSFULLY: "Fetched successfully",
   CREATED_SUCCESSFULLY: "Created successfully",
   REGISTERED_SUCCESSFULLY: "Registered successfully, Plesae check your email",
@@ -26,7 +26,7 @@ const commonResponseMessages = {
   UPLOAD_SUCCESS: "Uploaded Successfulyy",
 };
 
-const statusMappings = {
+const statusMappings: { [key: string]: number } = {
   FETCHED_SUCCESSFULLY: 200,
   CREATED_SUCCESSFULLY: 201,
   REGISTERED_SUCCESSFULLY: 201,
