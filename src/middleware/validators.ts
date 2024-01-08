@@ -7,6 +7,7 @@ import {
 } from "../schema/userSchema";
 import { extractValidationErrors } from "../helpers/schemaError";
 import AppResponse from "../helpers/AppResponse";
+import { createChatSchema } from "../schema/chatSchema";
 
 function createValidationMiddleware(
   schema: z.ZodObject<any, any, any> | z.ZodString
@@ -25,3 +26,4 @@ function createValidationMiddleware(
 }
 export const validateSignUp = createValidationMiddleware(signUpSchema);
 export const validateSignIn = createValidationMiddleware(signInSchema);
+export const validateUserChat = createValidationMiddleware(createChatSchema);
