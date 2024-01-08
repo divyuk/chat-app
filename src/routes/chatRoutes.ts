@@ -11,3 +11,5 @@ const router: Router = Router();
 router.use(verifyToken);
 
 router.route("/").get(fetchChatHistory).post(validateUserChat, createUserChat);
+
+export default router;
