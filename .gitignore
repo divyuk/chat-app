@@ -129,5 +129,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-src/data/users.json
+src/data/*.json
 .vscode
