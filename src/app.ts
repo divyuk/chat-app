@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import userRouter from "./routes/userRoutes";
 import responseMiddleware from "./middleware/responseMiddleware";
 
-// import chatRouter from "./routes/chatRoutes";
+import chatRouter from "./routes/chatRoutes";
 // import messageRouter from "./routes/messageRoutes";
 // import responseMiddleware from "./middleware/responseMiddleware";
 // import AppResponse from "./helpers/AppResponse";
@@ -36,7 +36,7 @@ if (process.env.NODE_ENV !== "test") {
 
 // api routes
 app.use("/api/v1/users", userRouter);
-// app.use("/api/chat", chatRouter);
+app.use("/api/v1/chat", chatRouter);
 // app.use("/api/messages", messageRouter);
 
 // app.use((req: Request, res: Response, next: NextFunction) => {
